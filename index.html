@@ -1,1 +1,270 @@
-<h1></h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vehículos Autónomos</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Teko:wght@600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  overflow-x:hidden;
+  text-align:center;
+  position:relative;
+
+  background: radial-gradient(circle, #ffffff22 1px, transparent 1px),
+              radial-gradient(circle, #ffffff22 1px, transparent 1px),
+              linear-gradient(to bottom, #0b0c10, #1c1f2a, #2c2f3a);
+  background-size: 50px 50px, 50px 50px, cover;
+}
+
+/* ---- CABECERA ---- */
+header{
+  background:rgba(0,0,30,0.7);
+  padding:30px 10px;
+  border-bottom:2px solid #00f0ff;
+  box-shadow:0 0 25px #00f0ff40;
+  position:relative;
+  z-index:2;
+}
+header h1{
+  font-family:'Teko',sans-serif;
+  font-size:3.5em;
+  color:#00f0ff;
+  text-shadow:0 0 25px #00f0ff;
+  letter-spacing:2px;
+  margin-bottom:15px;
+}
+
+/* ---- BOTONES ---- */
+.nav-btns{
+  margin-top:10px;
+}
+.nav-btns .btn{
+  margin:5px;
+  font-size:1em;
+}
+
+.btn{
+  display:inline-block;
+  background:#00f0ff;
+  color:#000;
+  padding:12px 25px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  transition:all 0.3s ease;
+  cursor:pointer;
+}
+.btn:hover{
+  background:#fff;
+  color:#007a99;
+  box-shadow:0 0 20px #00f0ff, 0 0 40px #00f0ff;
+}
+
+/* ---- SECCIONES ---- */
+.section{
+  padding:20px 20px;
+  position:relative;
+  z-index:2;
+  display:none;
+}
+.section.active{display:block;}
+.section img{
+  width:40%;
+  max-width:200px;
+  border-radius:15px;
+  box-shadow:0 0 30px rgba(0,240,255,0.4);
+  margin:10px 0;
+  transition:transform 0.4s ease;
+}
+.section img:hover{
+  transform:scale(1.03);
+}
+.section h2{
+  font-family:'Teko',sans-serif;
+  font-size:2.8em;
+  color:#00f0ff;
+  text-shadow:0 0 20px #00f0ff;
+  margin-bottom:15px;
+}
+.section p{
+  font-size:1.2em;
+  line-height:1.7;
+  max-width:800px;
+  margin:auto;
+  background:rgba(255,255,255,0.08);
+  padding:15px 25px;
+  border-left:4px solid #00f0ff;
+  border-radius:10px;
+}
+
+/* ---- FOOTER ---- */
+footer{
+  background:rgba(0,0,30,0.8);
+  padding:25px;
+  margin-top:50px;
+  font-size:1em;
+  letter-spacing:1px;
+  color:#aee6ff;
+}
+
+/* ---- FORMULARIO ---- */
+form{
+  max-width:400px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+}
+form input, form textarea{
+  padding:12px;
+  margin:10px 0;
+  border-radius:10px;
+  border:none;
+  font-size:1em;
+}
+form button{
+  align-self:center;
+}
+
+/* ---- ANIMACIÓN DE LÍNEAS ---- */
+.line {
+  position: absolute;
+  width: 2px;
+  background: rgba(0, 240, 255, 0.3);
+  top: -60px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  from { transform: translateY(0); }
+  to { transform: translateY(100vh); }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Vehículos Autónomos</h1>
+  <div class="nav-btns">
+    <button class="btn" onclick="mostrarSeccion('inicio')">Inicio</button>
+    <button class="btn" onclick="mostrarSeccion('info')">Información General</button>
+    <button class="btn" onclick="mostrarSeccion('avances')">Avances</button>
+    <button class="btn" onclick="mostrarSeccion('futuro')">Futuro</button>
+    <button class="btn" onclick="mostrarSeccion('contacto')">Contacto</button>
+  </div>
+</header>
+
+<!-- LÍNEAS ANIMADAS DE FONDO -->
+<script>
+for(let i=0;i<20;i++){
+  const line = document.createElement('div');
+  line.classList.add('line');
+  line.style.left = (Math.random() * 100) + '%';
+  line.style.animationDuration = (2 + Math.random() * 2) + 's';
+  line.style.height = (20 + Math.random() * 50) + 'px';
+  document.body.appendChild(line);
+}
+</script>
+
+<!-- INICIO -->
+<section class="section active" id="inicio">
+  <h2>Bienvenido</h2>
+  <p>Los vehículos autónomos, también llamados coches autónomos o self-driving cars, representan una revolución en la movilidad y la tecnología del transporte. Gracias a la integración de inteligencia artificial, sensores avanzados, cámaras, radares y sistemas de comunicación, estos vehículos pueden desplazarse de manera segura y eficiente sin intervención humana directa.
+
+Su desarrollo comenzó con sistemas de asistencia a la conducción, como el control de crucero adaptativo y la asistencia de mantenimiento de carril, evolucionando hasta los modernos vehículos autónomos de nivel 4 y 5, capaces de tomar decisiones complejas en entornos urbanos y carreteras.
+
+Entre sus principales objetivos destacan la seguridad vial, reduciendo accidentes causados por errores humanos, y la eficiencia en el transporte, optimizando rutas, disminuyendo congestiones y reduciendo emisiones contaminantes. Además, los vehículos autónomos abren nuevas posibilidades en transporte público, logística y movilidad inclusiva, mejorando la calidad de vida de las personas y transformando ciudades inteligentes en entornos más seguros y sostenibles.</p>
+  <img src="vehiculo.jpg.jpg" alt="Vehículo autónomo">
+</section>
+
+<!-- INFORMACIÓN GENERAL -->
+<section class="section" id="info">
+  <h2>Información General</h2>
+  <img src="carro.jpg.jpg" alt="Sensores de vehículo autónomo">
+ 
+  <p>Los vehículos autónomos combinan múltiples tecnologías avanzadas para operar de forma segura y eficiente. Su sistema incluye sensores LIDAR, cámaras de alta resolución, radares, ultrasonidos y GPS, todos conectados a un software de inteligencia artificial capaz de analizar el entorno, detectar obstáculos, reconocer señales de tránsito y anticipar movimientos de otros vehículos o peatones.
+
+Además, los vehículos autónomos interactúan con la infraestructura urbana inteligente, como semáforos conectados, sensores de calles y otros vehículos, creando un ecosistema de transporte interconectado y más seguro. Esta tecnología no solo busca reducir accidentes, sino también mejorar la eficiencia energética, optimizar rutas, disminuir congestión y favorecer la movilidad sostenible.
+
+Su funcionamiento se basa en un procesamiento masivo de datos en tiempo real, que permite tomar decisiones rápidas y seguras en cualquier condición de tráfico. Los vehículos autónomos representan, por tanto, una innovación tecnológica integral, con aplicaciones en transporte personal, servicios de reparto, movilidad compartida y transporte público automatizado.</p>
+</section>
+<video width="15%" controls style="border-radius:10px; margin:10px 0; box-shadow:0 0 20px rgba(0,240,255,0.4);">
+    <source src="autonomo.mp4" type="video/mp4">
+    Tu navegador no soporta el video.
+  </video>
+  
+<!-- AVANCES -->
+<section class="section" id="avances">
+  <h2>Avances</h2>
+  <img src="vehi.jpg.jpg" alt="Coche autónomo">
+  <p>El desarrollo de los vehículos autónomos ha experimentado avances significativos en los últimos años. La inteligencia artificial, el aprendizaje automático y la visión computarizada permiten que estos vehículos aprendan de cada viaje, mejorando continuamente sus algoritmos de conducción.
+
+Entre los avances más destacados se encuentran los sistemas de detección y prevención de colisiones, el reconocimiento de señales y semáforos en tiempo real, y la capacidad de adaptarse a condiciones climáticas adversas y entornos urbanos complejos. Las pruebas en carreteras de todo el mundo han permitido recopilar datos masivos para entrenar algoritmos más precisos y seguros.
+
+Además, se han desarrollado vehículos autónomos específicos para reparto de mercancías y transporte público, demostrando la versatilidad de esta tecnología y su potencial para transformar sectores económicos completos. Estos avances representan un paso crucial hacia la movilidad totalmente autónoma y segura, integrando eficiencia, sostenibilidad y conectividad en cada viaje.</p>
+</section>
+
+<!-- FUTURO -->
+<section class="section" id="futuro">
+  <h2>Futuro</h2>
+  <img src="auto.jpg.jpg" alt="Futuro transporte autónomo">
+  <p>El futuro de los vehículos autónomos apunta a una movilidad completamente conectada y automatizada, donde los coches no solo se conducen solos, sino que también se comunican entre sí y con la infraestructura urbana. La integración de redes 5G, energías limpias, inteligencia artificial avanzada y ciudades inteligentes permitirá reducir accidentes, mejorar la eficiencia energética y optimizar el transporte urbano.
+
+Se espera que la adopción masiva de vehículos autónomos transforme sectores como el transporte público, la logística y la movilidad compartida, reduciendo costos y ofreciendo soluciones más inclusivas y accesibles para todos. Además, la combinación de vehículos autónomos con tecnologías sostenibles favorecerá un transporte más ecológico, disminuyendo emisiones contaminantes y promoviendo ciudades más limpias y seguras.
+
+El desarrollo continuo de esta tecnología también enfrenta retos importantes, como regulaciones legales, ciberseguridad y aceptación social, que deberán superarse para lograr un futuro donde la conducción autónoma sea segura, eficiente y confiable.</p>
+</section>
+
+<!-- CONTACTO -->
+<section class="section" id="contacto">
+  <h2>Contacto</h2>
+  <form onsubmit="enviarMensajePDF(event)">
+    <input type="text" id="nombre" placeholder="Tu nombre" required>
+    <input type="email" id="correo" placeholder="Tu correo" required>
+    <textarea id="mensaje" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
+    <button type="submit" class="btn">Enviar y Generar PDF</button>
+  </form>
+</section>
+
+<footer>
+   © <span id="year"></span> Francisco Adonay Lopéz Escamilla 2-1 General
+</footer>
+
+<script>
+function mostrarSeccion(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function enviarMensajePDF(e){
+  e.preventDefault();
+  const nombre = document.getElementById('nombre').value;
+  const correo = document.getElementById('correo').value;
+  const mensaje = document.getElementById('mensaje').value;
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  doc.setFontSize(16);
+  doc.text("Contacto - Vehículos Autónomos", 20, 20);
+  doc.setFontSize(12);
+  doc.text("Nombre: " + nombre, 20, 40);
+  doc.text("Correo: " + correo, 20, 50);
+  doc.text("Mensaje:", 20, 60);
+  doc.text(mensaje, 20, 70, {maxWidth:170});
+  doc.save("contacto_vehiculos_autonomos.pdf");
+
+  document.getElementById('nombre').value='';
+  document.getElementById('correo').value='';
+  document.getElementById('mensaje').value='';
+  mostrarSeccion('inicio');
+}
+</script>
+
+</body>
+</html>
